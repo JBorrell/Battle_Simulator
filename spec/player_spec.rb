@@ -16,13 +16,6 @@ describe Player do
     end
   end
 
-  describe '#attack' do
-    it 'allows players to attack' do
-      expect(timmy).to receive(:deduct_hp)
-      johnny.attack(timmy)
-    end
-  end
-
   describe '#deduct_hp' do
     it 'deducts 10 hp after an attack' do
       expect { timmy.deduct_hp }.to change { timmy.hp }.by(-10)
