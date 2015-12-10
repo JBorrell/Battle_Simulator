@@ -1,13 +1,27 @@
 <% if @game.turn.hp <= 0 %>
+
+With a final strike of <%= @game.turn.dmg %> damage! <br><br>
 <h1><%= @game.opponent.name.upcase %> WINS!!!</h1>
 <br><br>
 <a href="/">Start new match!</a>
+
 <% else %>
-<%= @game.turn.name %> has been attacked by <%= @game.opponent.name %>!
+
+    <% if @game.player_1.poison == true %>
+    <%= @game.player_1.name %> is poisoned!!!
+    <br><br>
+    <% if @game.opponent == @game.player_1 %>
+        You lose 3 health from the poison!
+    <% end %>
+    <% end %>
+
+<br><br>
+<%= @game.turn.name %> has lost <%= @game.turn.dmg %> health from <%= @game.opponent.name %>'s attack!!
 <br><br>
 <%= @game.player_2.name %>: <%= @game.player_2.hp %> hp
 <br><br>
 <%= @game.player_1.name %>: <%= @game.player_1.hp %> hp
 <br><br>
 <a href="/play">Continue</a>
+
 <% end %>

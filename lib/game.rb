@@ -1,4 +1,5 @@
 class Game
+
   attr_reader :player_1, :player_2, :turn
 
   def initialize(player_1, player_2)
@@ -18,4 +19,8 @@ class Game
   def opponent
     turn == player_1 ? player_2 : player_1
   end
+
+  private
+
+
 end
