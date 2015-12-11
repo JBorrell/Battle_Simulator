@@ -5,7 +5,7 @@
 feature 'losing a game' do
   scenario 'shows a lose message when player reaches 0 HP' do
     sign_in_and_play
-    10.times { attack_and_continue }
+    23.times { attack_and_continue }
     click_link('Attack!')
     expect(page).to have_content 'JOHNNY CASH WINS!!!'
   end

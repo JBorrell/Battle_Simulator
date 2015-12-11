@@ -10,13 +10,21 @@ feature 'Player 1 attacks player 2' do
   scenario 'confirms player 2 has been attacked' do
     sign_in_and_play
     click_link('Attack!')
-    expect(page).to have_content 'Timmy Jones has been attacked by Johnny Cash!'
+    expect(page).to have_content 'Johnny Cash attacks Timmy Jones for 5 damage!'
   end
 
   scenario 'confirms player 1 has been attacked' do
     sign_in_and_play
     attack_and_continue
     click_link('Attack!')
-    expect(page).to have_content 'Johnny Cash has been attacked by Timmy Jones'
+    expect(page).to have_content 'Timmy Jones attacks Johnny Cash for 5 damage!'
+  end
+
+  scenario 'Player 1 can heal instead of attacking' do
+    sign_in_and_play
+    attack_and_continue
+    attack_and_continue
+    click_button('Heal!')
+    expect(page).to have_content('Johnny Cash has increased his health by 10!')
   end
 end

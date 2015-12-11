@@ -26,20 +26,20 @@ describe Game do
 
   describe '#turn' do
     it 'starts with player 1' do
-      expect(game.turn).to eq johnny
+      expect(game.turn).to eq timmy
     end
   end
 
   describe '#opponent' do
     it 'returns the player whose turn it is not' do
-      expect(game.opponent).to eq timmy
+      expect(game.opponent).to eq johnny
     end
   end
 
   describe '#switch_turn' do
     it 'switches turn after an attack' do
       game.switch_turn
-      expect(game.turn).to eq timmy
+      expect(game.turn).to eq johnny
     end
   end
 end

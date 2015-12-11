@@ -20,12 +20,12 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @game = $game
+    @game.switch_turn
     erb :play
   end
 
   get '/attack' do
     @game = $game
-    @game.switch_turn
     erb(:attack)
   end
 
@@ -42,6 +42,12 @@ class Battle < Sinatra::Base
     poison = Attack.new
     poison.poison_attack(@game.opponent)
     poison.effects(@game.turn)
+    redirect '/attack'
+  end
+
+  get '/heal' do
+    @game = $game
+    Attack.new.heal(@game.turn)
     redirect '/attack'
   end
 

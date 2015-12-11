@@ -5,7 +5,7 @@ class Game
   def initialize(player_1, player_2)
     @player_1 = player_1
     @player_2 = player_2
-    @turn = player_1
+    @turn = player_2
   end
 
   def attack(player)
@@ -14,6 +14,8 @@ class Game
 
   def switch_turn
     turn == player_1 ? @turn = player_2 : @turn = player_1
+    @player_1.healed = 0
+    @player_2.healed = 0
   end
 
   def opponent

@@ -18,7 +18,7 @@ describe Player do
 
   describe '#deduct_hp' do
     it 'deducts 10 hp after an attack' do
-      expect { timmy.deduct_hp }.to change { timmy.hp }.by(-10)
+      expect { timmy.deduct_hp(5) }.to change { timmy.hp }.by(-5)
     end
   end
 end

@@ -3,25 +3,44 @@
 With a final strike of <%= @game.turn.dmg %> damage! <br><br>
 <h1><%= @game.opponent.name.upcase %> WINS!!!</h1>
 <br><br>
-<a href="/">Start new match!</a>
+<form action="/">
+  <input type="submit" value="Start new match!"/>
+</form>
 
 <% else %>
 
-    <% if @game.player_1.poison == true %>
+    <% if @game.player_1.poison == true  %>
     <%= @game.player_1.name %> is poisoned!!!
     <br><br>
-    <% if @game.opponent == @game.player_1 %>
-        You lose 3 health from the poison!
-    <% end %>
     <% end %>
 
+    <% if @game.player_2.poison == true  %>
+    <%= @game.player_2.name %> is poisoned!!!
+    <br><br>
+    <% end %>
+
+    <% if @game.turn.poison == true %>
+    <%= @game.turn.name %> is hurt by poison!
+    <br><br>
+    <% end %>
+
+<% if @game.turn.healed > 0 %>
+<%= @game.turn.name %> heals by <%= @game.turn.healed %><br><br>
+<% if @game.turn.healed == 5 %>
+Poison has been removed by heal! <br><br>
+<% end %>
+<% else %>
+<%= @game.turn.name %> attacks <%= @game.opponent.name %> for <%= @game.opponent.dmg %> damage!
 <br><br>
-<%= @game.turn.name %> has lost <%= @game.turn.dmg %> health from <%= @game.opponent.name %>'s attack!!
-<br><br>
+<% end %>
+
 <%= @game.player_2.name %>: <%= @game.player_2.hp %> hp
 <br><br>
 <%= @game.player_1.name %>: <%= @game.player_1.hp %> hp
 <br><br>
-<a href="/play">Continue</a>
+
+<form action="/play">
+  <input type="submit" value="Continue"/>
+</form>
 
 <% end %>

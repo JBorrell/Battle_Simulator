@@ -1,5 +1,6 @@
 class Player
   attr_reader :name, :hp, :dmg, :poison
+  attr_accessor :healed
 
 
   DEFAULT_HP = 60
@@ -9,6 +10,7 @@ class Player
     @hp = DEFAULT_HP
     @poison = false
     @psn_counter = 0
+    @healed = 0
   end
 
   def deduct_hp(damage)
@@ -18,6 +20,11 @@ class Player
 
   def poisoned
     @poison = true
+  end
+
+  def heal(amount)
+    @hp += amount
+    @healed = amount
   end
 
   def psn_counter
